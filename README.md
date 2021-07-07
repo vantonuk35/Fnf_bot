@@ -4,15 +4,35 @@
 
 OpenCV Based bot for Friday Night Funkin
 =====================
->Used DXGI for fast ScreenShots
->
->Bot detecting Arrows using color checking
->
->If have problem that bot crashes at starttry put game to window mode at center of screen
+Bot detecting Arrows using color checking
+
+=====================
+How to use it ?
+
+Make sure the game is called " Friday Night Funkin' "
+If its not, download WinSpy++ to edit the window name 
+_________________
+[WinSpy++](http://www.catch22.net/assets/files/software/WinSpy17.zip)
+
+
+https://user-images.githubusercontent.com/46357922/124819170-eb600300-df39-11eb-8fb4-dfbb64d7ad1d.mp4
+
+
+_________________
+The bot only work if the game is windowed in the middle of the screen
+Make sure the arrows colors are **not** custom
+_________________
+Some mods may not work with this program, if so, create an issue with the mod in question with the label "Mod Not Supported"
+[Mod not supported](https://github.com/Edouard127/Fnf_bot/issues/new)
+Labels -> Mod Not Supported
+=======================
 
 
 
-https://user-images.githubusercontent.com/65894352/124630627-4a1a7380-de8b-11eb-99c0-7e74412599e8.mp4
+
+
+
+
 
 
 
