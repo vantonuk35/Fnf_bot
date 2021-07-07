@@ -1,8 +1,9 @@
-
-
-
-
 OpenCV Based bot for Friday Night Funkin
+
+Thanks to our supporter
+
+[![Stargazers repo roster for @Edouard127/Fnf_bot](https://reporoster.com/stars/dark/notext/Edouard127/Fnf_bot)](https://github.com/Edouard127/Fnf_bot/stargazers)
+[![Forkers repo roster for @Edouard127/Fnf_bot](https://reporoster.com/forks/dark/notext/Edouard127/Fnf_bot)](https://github.com/Edouard127/Fnf_bot/network/members)
 =====================
 Bot detecting Arrows using color checking
 
@@ -26,6 +27,7 @@ Some mods may not work with this program, if so, create an issue with the mod in
 [Mod not supported](https://github.com/Edouard127/Fnf_bot/issues/new)
 Labels -> Mod Not Supported
 =======================
+
 
 _______________________
 This is free and unencumbered software released into the public domain.
