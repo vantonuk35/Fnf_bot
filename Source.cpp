@@ -1,4 +1,5 @@
 #pragma comment(lib,"opencv_world346.lib")
+#pragma optimize("", off)
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -103,7 +104,7 @@ public:
 	cv::Mat Take()
 	{
 		// Get new frame.
-		hr = pDeskDupl->AcquireNextFrame(00, &FrameInfo, &DesktopResource);
+		hr = pDeskDupl->AcquireNextFrame(0, &FrameInfo, &DesktopResource);
 		if (FAILED(hr))
 		{
 			return cv::Mat(1080, 1920, CV_8UC4);
@@ -138,31 +139,7 @@ void SendOutput(cv::Mat InputMatrix, int TrashHold, HWND GameWindow, char VK)
 {
 	SendMessageA(GameWindow, cv::sum(InputMatrix)[0] > TrashHold ? WM_KEYDOWN : WM_KEYUP, VK, 1);
 }
-void SetProcessPriority(LPWSTR ProcessName, int Priority)
-{
-	PROCESSENTRY32 proc32;
-	HANDLE hSnap;
-	if (hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0))
-	if (hSnap == INVALID_HANDLE_VALUE)
-	{
 
-	}
-	else
-	{
-		proc32.dwSize = sizeof(PROCESSENTRY32);
-		while ((Process32Next(hSnap, &proc32)) == TRUE)
-		{
-			if (_wcsicmp(proc32.szExeFile, ProcessName) == 0)
-			{
-				HANDLE h = OpenProcess(PROCESS_SET_INFORMATION, TRUE, proc32.th32ProcessID);
-				SetPriorityClass(h, Priority);
-				CloseHandle(h);
-				SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
-			}
-		}
-		CloseHandle(hSnap);
-	}
-}
 
 int main()
 {
@@ -179,7 +156,7 @@ int main()
 	screen_shot_manager.Init();
 	int key;
 	cv::namedWindow("output_target");
-	int down_scale = 4;
+	int down_scale = 3;
 	int pixel_reaction_sum = 25000 / down_scale / down_scale;
 	while ((game_window = FindWindowA(NULL, "Friday Night Funkin'")))
 	{
@@ -209,7 +186,7 @@ int main()
 		SendOutput(PixelsDown, pixel_reaction_sum, game_window, VK_DOWN);
 		SendOutput(PixelsUp, pixel_reaction_sum, game_window, VK_UP);
 		SendOutput(PixelsRight, pixel_reaction_sum, game_window, VK_RIGHT);
-		cv::imshow("output_game", src);
+		//cv::imshow("output_game", src);
 		cv::imshow("output_target", hsv_src);
 		key = cv::waitKey(1);
 	}
