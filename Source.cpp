@@ -1,5 +1,5 @@
 //#pragma comment(lib,"opencv_world452.lib")
-#pragma comment(lib,"opencv_world452d.lib")
+#pragma comment(lib,"opencv_world452.lib")
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -16,7 +16,7 @@
 #include <windows.h>
 #include <shlobj.h>
 
-#include "C:/Users/edoua/source/repos/Source/ScreenShoter.h"
+#include "ScreenShoter.h"
 auto get_time()
 {
 	return std::chrono::duration_cast<std::chrono::milliseconds>(
