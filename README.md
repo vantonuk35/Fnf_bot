@@ -25,6 +25,10 @@ Make sure the arrows colors are not custom
 
 
 
+
+[Gameplay](https://user-images.githubusercontent.com/46357922/125120028-df9e4900-e0bf-11eb-8369-169080210bf1.mp4)
+
+
 _______________________
 This is free and unencumbered software released into the public domain.
 
