@@ -75,6 +75,7 @@ public:
 		for (auto& [arrow_id, arrow_instance] : Arrows)
 		{
 			SendOutput(arrow_instance.FilterImage(Input), gameWindow, arrow_id);
+			
 		}
 	}
 };
@@ -97,7 +98,7 @@ int main()
 	int down_scale = 2;
 	int pixel_reaction_sum = 37000;
 	ArrowHandler arrow_handler(pixel_reaction_sum);
-	while ((game_window = FindWindowA(NULL, "Friday Night Funkin'")))
+	while (game_window = FindWindowA(NULL, "Friday Night Funkin'"))
 	{
 		cv::Mat src = screen_shot_manager.Take();
 		cv::Mat hsv_src;
