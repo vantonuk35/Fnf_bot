@@ -4,28 +4,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <Windows.h>
-
-#include <chrono>
-#include <unordered_map>
-#include <Atlbase.h>
-#include <comdef.h>
-#include <memory>
-#include <algorithm>
-#include <string>
-#include <windows.h>
-#include <shlobj.h>
-
 #include "C:/Users/edoua/source/repos/Source/ScreenShoter.h"
-auto get_time()
-{
-	return std::chrono::duration_cast<std::chrono::milliseconds>(
-		std::chrono::system_clock::now().time_since_epoch()
-		);
-}
-
-
-
 class DetectingArrow
 {
 	std::vector<std::pair<cv::Scalar, cv::Scalar>> _filters;//First - low_pass ; Second - High_pass
@@ -47,7 +26,6 @@ public:
 		return Output;
 	}
 };
-
 class ArrowHandler
 {
 	const enum Arrow_IDs
@@ -57,27 +35,23 @@ class ArrowHandler
 		ARR_DOWN = VK_DOWN,
 		ARR_UP = VK_UP
 	};
-
 	std::unordered_map<int, DetectingArrow> Arrows = {
 		{
 			ARR_LEFT,
 			DetectingArrow({
-				{cv::Scalar(147, 147, 194), cv::Scalar(165, 161, 206)},
-				{cv::Scalar(150, 85, 165), cv::Scalar(155, 95, 175)}
+				{cv::Scalar(147, 147, 194), cv::Scalar(165, 161, 206)}, {cv::Scalar(150, 85, 165), cv::Scalar(155, 95, 175)}
 			})
 		},
 		{
 			ARR_RIGHT,
 			DetectingArrow({
-				{cv::Scalar(172, 187, 243), cv::Scalar(187, 205, 253)},
-				{cv::Scalar(170, 125, 200), cv::Scalar(180, 135, 210)}
+				{cv::Scalar(172, 187, 243), cv::Scalar(187, 205, 253)}, {cv::Scalar(170, 125, 200), cv::Scalar(180, 135, 210)}
 			})
 		},
 		{
 			ARR_UP,
 			DetectingArrow({
-				{cv::Scalar(56, 236, 246), cv::Scalar(59, 255, 253)},
-				{cv::Scalar(60, 175, 210), cv::Scalar(65, 185, 220)}
+				{cv::Scalar(56, 236, 246), cv::Scalar(59, 255, 253)}, {cv::Scalar(60, 175, 210), cv::Scalar(65, 185, 220)}
 			})
 		},
 		{
@@ -88,17 +62,14 @@ class ArrowHandler
 		}
 	};
 	int TrashHold;
-
 	void SendOutput(cv::Mat InputMatrix, HWND GameWindow, unsigned char VK)
 	{
 		SendMessageA(GameWindow, cv::sum(InputMatrix)[0] > TrashHold ? WM_KEYDOWN : WM_KEYUP, VK, 1);
 	}
-
 public:
 	ArrowHandler(int new_trashhold) : TrashHold(new_trashhold)
 	{
 	};
-
 	void ProcessImage(cv::Mat Input, HWND gameWindow)
 	{
 		for (auto& [arrow_id, arrow_instance] : Arrows)
@@ -107,7 +78,6 @@ public:
 		}
 	}
 };
-
 cv::Mat Cut_screenshot_to_arrow_zone(cv::Mat Input, int downscale_factor, HWND game_window)
 {
 	RECT gameRect;
@@ -116,28 +86,23 @@ cv::Mat Cut_screenshot_to_arrow_zone(cv::Mat Input, int downscale_factor, HWND g
 	cv::resize(Input, Input,
 		{ 1920 / downscale_factor, 1080 / downscale_factor });
 	Input = Input({ 1920 / downscale_factor / 2, 30,
-		1920 / downscale_factor / 2, 1080 / downscale_factor / 4 - 50 });
+		1920 / downscale_factor / 2, 1080 / downscale_factor / 4 - 50});
 	return Input;
 }
-
 int main()
 {
 	HWND game_window = FindWindowA(NULL, "Friday Night Funkin'");
 	DXScreenShoter11 screen_shot_manager;
 	screen_shot_manager.Init();
-
-
-	int down_scale = 4;
-	int pixel_reaction_sum = 20000 / down_scale / down_scale;
+	int down_scale = 2;
+	int pixel_reaction_sum = 37000;
 	ArrowHandler arrow_handler(pixel_reaction_sum);
-	int key;
 	while ((game_window = FindWindowA(NULL, "Friday Night Funkin'")))
 	{
 		cv::Mat src = screen_shot_manager.Take();
 		cv::Mat hsv_src;
 		cv::cvtColor(Cut_screenshot_to_arrow_zone(src, down_scale, game_window), hsv_src, cv::COLOR_BGR2HSV);
 		arrow_handler.ProcessImage(hsv_src, game_window);
-		key = cv::waitKey(1);
 	}
 	return 0;
 }
