@@ -1,6 +1,6 @@
 ### OpenCV Based bot for Friday Night Funkin'
 
-[How to build the code ?](https://github.com/Edouard127/Fnf_bot/wiki)
+[How to build the code ?](https://edouard127.github.io/Fnf_bot/)
 
 Thanks to our supporter
 
