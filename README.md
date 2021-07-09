@@ -27,8 +27,7 @@ Make sure the arrows colors are not custom
 
 
 
-
-[Gameplay](https://cdn.discordapp.com/attachments/811283553114390528/863195122585305098/8mb.video-iJO-Mb93XZv5.mp4)
+![](https://cdn.discordapp.com/attachments/811283553114390528/863195122585305098/8mb.video-iJO-Mb93XZv5.mp4)
 
 
 _______________________
