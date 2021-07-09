@@ -20,7 +20,7 @@ If its not, download WinSpy++ to edit the window name
 
 [WinSpy++](http://www.catch22.net/assets/files/software/WinSpy17.zip)
 
-[Using WinSpy++](https://user-images.githubusercontent.com/46357922/124819170-eb600300-df39-11eb-8fb4-dfbb64d7ad1d.mp4)
+[Using WinSpy++](https://user-images.githubusercontent.com/46357922/125144989-c2806f00-e0ed-11eb-94bd-bd27fa49539a.mp4)
 
 The bot only work if the game is windowed in the middle of the screen
 Make sure the arrows colors are not custom
