@@ -4,7 +4,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include "C:/Users/edoua/source/repos/Source/ScreenShoter.h"
+#include "ScreenShoter.h"
 class DetectingArrow
 {
 	std::vector<std::pair<cv::Scalar, cv::Scalar>> _filters;//First - low_pass ; Second - High_pass
