@@ -65,8 +65,7 @@ void DXScreenShoter11::Init()
 cv::Mat DXScreenShoter11::Take()
 {
 	DXGI_OUTDUPL_FRAME_INFO FrameInfo;
-	//You need it, because other way there would be black frames
-	Sleep(1);
+
 	// Get new frame.
 	hr = pDeskDupl->AcquireNextFrame(0, &FrameInfo, &DesktopResource);
 	if (FAILED(hr))
