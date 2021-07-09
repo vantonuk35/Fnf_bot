@@ -27,8 +27,10 @@ Make sure the arrows colors are not custom
 
 
 
-![](https://cdn.discordapp.com/attachments/811283553114390528/863195122585305098/8mb.video-iJO-Mb93XZv5.mp4)
-
+Gameplay
+<video width="320" height="240" controls>
+  <source type="video/mp4" src="https://cdn.discordapp.com/attachments/811283553114390528/863195122585305098/8mb.video-iJO-Mb93XZv5.mp4">
+</video>
 
 _______________________
 This is free and unencumbered software released into the public domain.
