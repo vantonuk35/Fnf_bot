@@ -17,9 +17,8 @@ class DXScreenShoter11
 	ID3D11DeviceContext* pImmediateContext = nullptr;
 	ID3D11Texture2D* AcquiredDesktopImage;
 	IDXGIResource* DesktopResource = nullptr;
-
-	IDXGIOutputDuplication* pDeskDupl;
-	ID3D11DeviceContext* ctx = NULL;
+	IDXGIOutputDuplication* pDeskDupl = nullptr;
+	ID3D11DeviceContext* ctx = nullptr;
 
 	cv::Mat ExtractBitmap(ID3D11Texture2D* d3dtex, ID3D11Device* pDevice);
 
@@ -28,9 +27,5 @@ public:
 		Get New device
 		link subOutput & device to DeskDupl*/
 	void Init();
-
 	cv::Mat Take();
-
 };
-
-#pragma once
