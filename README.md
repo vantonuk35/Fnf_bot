@@ -1,10 +1,10 @@
-##deprecated !!!!
 
-##UPDATE SOON
 
 ### OpenCV Based bot for Friday Night Funkin'
 
 This project have been forked from [vantonuk35/Fnf_bot](https://github.com/vantonuk35/Fnf_bot)
+
+# GO CHECK SYSTEM REQUIREMENT !!
 
 [How to build the code ?](https://edouard127.github.io/Fnf_bot/)
 
@@ -29,7 +29,28 @@ If its not, download WinSpy++ to edit the window name
 The bot only work if the game is windowed in the middle of the screen
 Make sure the arrows colors are not custom
 
+### Requirement
+___________________
 
+# Minimum
+
+60 hz display and fps cap set to factor of the hz amount (hz * number = fps cap)
+
+Intel or AMD CPU (2 cores and 2.5Ghz)
+
+4GB of DDR3 RAM
+
+__________________
+
+# Recommended
+
+=> 75 hz display and fps cap set to factor of the hz amount (hz * number = fps cap)
+
+Intel or AMD CPU (4 cores and 3GHz)
+
+8GB of DDR4 RAM
+
+_______________
 
 Gameplay
 
