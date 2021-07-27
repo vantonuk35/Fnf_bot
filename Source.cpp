@@ -2,7 +2,9 @@
 #define USE_UNIFIED_MEM
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
-
+#include <opencv2/core/cuda.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
 #include <Windows.h>
 
 #include <chrono>
@@ -16,7 +18,9 @@
 #include <shlobj.h>
 #include <future>
 #include "ScreenShoter.h"
-#include <DXGI.h>  
+#include <DXGI.h>
+#include <time.h>
+#include <shlobj.h>
 
 
 
@@ -43,7 +47,7 @@ public:
 	}
 	cv::Mat FilterImage(cv::Mat Input, int downscale_factor)
 	{
-		cv::Rect new_size = { _arrow_num * 160 / downscale_factor,0,160 / downscale_factor ,Input.rows };
+		cv::Rect new_size = { _arrow_num * 160 / downscale_factor, 0, 160 / downscale_factor, Input.rows };
 		Input = Input(new_size);
 		cv::Mat Additional, Output;
 		Output = cv::Mat::zeros(Input.rows, Input.cols, CV_8UC1);
@@ -120,7 +124,7 @@ void Cut_screenshot_to_arrow_zone(cv::Mat& Input, int downscale_factor, HWND gam
 	RECT gameRect;
 	GetWindowRect(game_window, &gameRect);
 	Input = Input({ gameRect.left, gameRect.top, gameRect.right - gameRect.left, gameRect.bottom - gameRect.top });
-    cv::resize(Input, Input,
+	cv::resize(Input, Input,
 		{ 1920 / downscale_factor, 1080 / downscale_factor });
 	Input = Input({ 1920 / downscale_factor / 2 + int(100 / downscale_factor), int(120 / downscale_factor),
 		1920 / downscale_factor / 2 - int(310 / downscale_factor), 1080 / downscale_factor / 4 - int(160 / downscale_factor) });
@@ -135,17 +139,19 @@ std::string WStringToString(const std::wstring& wstr)
 
 int main()
 {
+	
 	HWND game_window = FindWindowA(NULL, "Friday Night Funkin'");
 	DXScreenShoter11 screen_shot_manager;
 	screen_shot_manager.Init();
 
-	int down_scale = 5;
-	int pixel_reaction_sum = 40000 / down_scale / down_scale;
+	int down_scale = 11;
+	int pixel_reaction_sum = 1000;
 	ArrowHandler arrow_handler(pixel_reaction_sum);
-	system("mode 650");
-	
-	while ((game_window = FindWindowA(NULL, "Friday Night Funkin'")))
+
+	while (game_window = FindWindowA(NULL, "Friday Night Funkin'"))
 	{
+		auto t_start = std::chrono::high_resolution_clock::now();
+		auto t_end_read = std::chrono::high_resolution_clock::now();
 		static auto last_time = get_time();
 		std::cout << (get_time() - last_time).count() << "\t milliseconds " << '\n';
 		last_time = get_time();
